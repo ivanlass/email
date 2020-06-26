@@ -14,19 +14,19 @@ app.use(cors())
 app.use(express.json())
 
 
-// const uri = "mongodb+srv://ivan:ivan@mailreader-pw9x4.mongodb.net/<dbname>?retryWrites=true&w=majority"
-// mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
-// const connection = mongoose.connection
-// connection.once('open', () => {
-//     console.log('mongo konekcija ok')
-// })
+const uri = "mongodb+srv://ivan:ivan@mailreader-pw9x4.mongodb.net/<dbname>?retryWrites=true&w=majority"
+mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
+const connection = mongoose.connection
+connection.once('open', () => {
+    console.log('mongo konekcija ok')
+})
 
 // const postsRouter = require('./routes/posts')
-// const usersRouter = require('./routes/users')
+const usersRouter = require('./Routes/Users.route')
 // const categoryRouter = require('./routes/categories')
 
 // app.use('/posts', postsRouter)
-// app.use('/users', usersRouter)
+app.use('/users', usersRouter)
 // app.use('/categories', categoryRouter)
 
 app.listen(port, () => {
