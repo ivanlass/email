@@ -6,7 +6,7 @@ const userSchema = new Schema({
     username: {
         type: String,
         required: false,
-        unique: true,
+        unique: false,
         trim: true,
         minlength: 3
     },
@@ -20,7 +20,6 @@ const userSchema = new Schema({
     role: {
         type: String,
         required: false,
-        unique: true,
         trim: true,
         minlength: 3,
     },
@@ -44,11 +43,6 @@ const userSchema = new Schema({
         type: Array,
         required: false,
     },
-    affiID: {
-        type: String,
-        required: false,
-    },
-
 
 })
 

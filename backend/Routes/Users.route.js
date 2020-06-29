@@ -1,10 +1,13 @@
 const router = require('express').Router()
 const User = require('../Models/User.model')
-const csvtojson = require("csvtojson");
 var multer  = require('multer')
-var upload = multer()
+
 const csv = require('csv-parser');
 const fs = require('fs');
+const path = require('path');
+
+
+const upload= multer({dest: "../emailforsending"})
 
 router.route('/').get((req, res) => {
     User.find()
@@ -12,25 +15,27 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error' + err))
 })
 
+
+
 router.post('/add', upload.single('file'), function (req, res, next) {
     const {username, password, role} = req.body
-    const newUser = new User({ username, password, role })
-    fs.createReadStream(req.file.buffer)
+    let mailoviZaSlanje = []
+    fs.createReadStream(req.file.path)
     .pipe(csv())
     .on('data', (row) => {
-      console.log(row);
+      mailoviZaSlanje.push(row)
     })
     .on('end', () => {
       console.log('CSV file successfully processed');
     });
-    // newUser.save()
-    //     .then(() => res.json('User added'))
-    //     .catch(err => res.status(400).json('Error' + err))
+    setTimeout(() => {
+      const newUser = new User({ username, password, role, mailoviZaSlanje })
+      newUser.save()
+          .then(() => res.json('User added'))
+          .catch(err => res.status(400).json('Error' + err))
+    }, 555);
+
   })
-
-
-
-
 
 
 
