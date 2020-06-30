@@ -19,10 +19,12 @@ connection.once('open', () => {
 const offerRouter = require('./routes/Offer.route')
 const usersRouter = require('./Routes/Users.route')
 const countryRouter = require('./routes/Country.route')
+const recieversRouter = require('./Routes/Recievers.route')
 
 app.use('/offer', offerRouter)
 app.use('/users', usersRouter)
 app.use('/country', countryRouter)
+app.use('/recievers', recieversRouter)
 
 app.listen(port, () => {
     console.log(`port je ${port}`)
