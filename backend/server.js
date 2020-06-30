@@ -18,11 +18,11 @@ connection.once('open', () => {
 
 const offerRouter = require('./routes/Offer.route')
 const usersRouter = require('./Routes/Users.route')
-// const categoryRouter = require('./routes/categories')
+const countryRouter = require('./routes/Country.route')
 
 app.use('/offer', offerRouter)
 app.use('/users', usersRouter)
-// app.use('/categories', categoryRouter)
+app.use('/country', countryRouter)
 
 app.listen(port, () => {
     console.log(`port je ${port}`)
