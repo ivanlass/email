@@ -1,0 +1,7 @@
+.user-card {
+    background: green;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+
+}

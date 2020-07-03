@@ -8,7 +8,7 @@ function Site() {
     const [user, setUser] = useState(1)
   return (
     <div className="">
-        {user ===2 ? 
+        {user === 2 ? 
             <Login /> :  <Admin />
         }
      
