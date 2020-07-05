@@ -9,19 +9,13 @@ const recieversSchema = new Schema({
         unique: false,
         trim: true,
     },
-    country: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-    },
     list: {
         type: Array,
         required: true,
         unique: false,
         trim: true,
     },
-    
+
 })
 
 const Recievers = mongoose.model('Recievers', recieversSchema)

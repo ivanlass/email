@@ -1,19 +1,21 @@
 import React from 'react';
 import { Accordion, Card, Button } from 'react-bootstrap'
 import Offers from './Offers'
+import Primatelji from './Primatelji'
+
 
 function AccordionComponent() {
     return (
         <div className="">
-            <Accordion defaultActiveKey="0">
+            <Accordion >
                 <Card>
                     <Card.Header>
                         <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                            Liste primatelja
-        </Accordion.Toggle>
+                            Primatelji
+                        </Accordion.Toggle>
                     </Card.Header>
                     <Accordion.Collapse eventKey="0">
-                        <Card.Body>Hello! I'm the body</Card.Body>
+                        <Card.Body><Primatelji /></Card.Body>
                     </Accordion.Collapse>
                 </Card>
                 <Card>

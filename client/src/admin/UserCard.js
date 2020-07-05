@@ -1,27 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './admin.css'
-
-
+import { RadniciContext } from "../context/Radnici.context";
+import Select from './Select'
 
 function UserCard() {
+  const [radnici, setRadnici] = useContext(RadniciContext)
+  console.log(radnici)
+
+
   return (
-    <div className="user-card">
-        <p>Marko</p>
-        <select>
-            <option>NO geo</option>
-            <option> geo</option>
-            <option>SE geo</option>
-        </select>
-
-        <select>
-            <option>Advidi</option>
-            <option>DEM</option>
-            <option>Nova</option>
-        </select>
-
-        <p>010</p>
-        <p>14000</p>
-        <button>Submit</button>
+    <div>
+      {radnici.map(radnik => (
+        <div className="user-card">
+          <p>{radnik.username}</p>
+          <Select primatelji={true} selected={radnik.primatelji} />
+          <p>{radnik.affiID[0]}</p>
+          <Select primatelji={false} projekat={radnik.projekat} />
+          <p>{radnik.poslao}</p>
+          <button>Submit</button>
+        </div>
+      ))}
     </div>
   );
 }

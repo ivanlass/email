@@ -23,10 +23,7 @@ const userSchema = new Schema({
         trim: true,
         minlength: 3,
     },
-    drzava: {
-        type: String,
-        required: false,
-    },
+
     projekat: {
         type: String,
         required: false,
