@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { PrimateljiContext } from "../context/Primatelji.context";
+import { PrimateljiContext } from "../../context/Primatelji.context";
 import axios from 'axios';
 
 function Primatelji() {

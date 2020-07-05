@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Admin from './admin/Admin'
+import Admin from './admin/home/Admin'
 import Login from './Login'
 import { OfferProvider } from "./context/Offer.context";
 import { PrimateljiProvider } from "./context/Primatelji.context";

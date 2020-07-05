@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from 'react';
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
 import axios from 'axios';
-import { OfferContext } from "../context/Offer.context";
-import { PrimateljiContext } from "../context/Primatelji.context";
-import { RadniciContext } from "../context/Radnici.context";
+import { OfferContext } from "../../context/Offer.context";
+import { PrimateljiContext } from "../../context/Primatelji.context";
+import { RadniciContext } from "../../context/Radnici.context";
 
 
 function Admin() {

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { OfferContext } from "../context/Offer.context";
+import { OfferContext } from "../../context/Offer.context";
 import axios from 'axios';
 
 function Offers() {

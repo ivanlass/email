@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import './admin.css'
-import { RadniciContext } from "../context/Radnici.context";
-import Select from './Select'
+import { RadniciContext } from "../../context/Radnici.context";
+import Select from '../Select'
 
 function UserCard() {
   const [radnici, setRadnici] = useContext(RadniciContext)

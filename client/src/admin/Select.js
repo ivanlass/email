@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import './admin.css'
 import { OfferContext } from "../context/Offer.context";
 import { PrimateljiContext } from "../context/Primatelji.context";
 

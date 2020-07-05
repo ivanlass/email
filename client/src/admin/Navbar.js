@@ -2,7 +2,8 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import '../App.css'
-import Home from './Home'
+import Home from './home/Home'
+import UserSettings from './userSettings/UserSettings'
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,7 +27,7 @@ function NavbarComponent() {
 
         <Switch>
           <Route path="/addUser">
-            {/* <AddUser/> */}
+            <UserSettings />
           </Route>
           <Route exact path="/">
             <Home />
