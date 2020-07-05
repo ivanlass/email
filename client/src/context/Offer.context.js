@@ -5,9 +5,9 @@ export const OfferContext = createContext()
 
 
 export const OfferProvider = (props) => {
-    const [offer, setOffer] = useState([])
+    const [offers, setOffers] = useState([])
     return (
-        <OfferContext.Provider value={[offer, setOffer]}>
+        <OfferContext.Provider value={[offers, setOffers]}>
             {props.children}
         </OfferContext.Provider>
     )
