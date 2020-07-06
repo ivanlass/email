@@ -5,7 +5,6 @@ import { PrimateljiContext } from "../context/Primatelji.context";
 function Select(props) {
     const [primatelji, setPrimatelji] = useContext(PrimateljiContext)
     const [offers, setOffers] = useContext(OfferContext)
-    console.log(props.projekat)
     return (
 
         <div>
@@ -15,7 +14,7 @@ function Select(props) {
                         <option value={props.selected === primatelj.listName ? true : false}>{primatelj.listName}</option>
                     ))}
                 </select>
-                : <select>
+                : <select onClick={props.getPickedProject}>
                     {offers.map(offer => (
                         <option selected={props.projekat === offer.offer ? true : false}>{offer.offer}</option>
                     ))}
