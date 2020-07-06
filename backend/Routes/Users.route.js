@@ -19,6 +19,7 @@ router.route('/').get((req, res) => {
 
 router.post('/add', upload.single('file'), function (req, res, next) {
   const { username, password, role, projekat, poslao, affiID } = req.body
+  const affi = JSON.parse(affiID)
   let mailoviZaSlanje = []
   fs.createReadStream(req.file.path)
     .pipe(csv())
@@ -29,11 +30,16 @@ router.post('/add', upload.single('file'), function (req, res, next) {
       console.log('CSV file successfully processed');
     });
   setTimeout(() => {
-    const newUser = new User({ username, password, role, mailoviZaSlanje, projekat, poslao, affiID })
+    const newUser = new User({ username, password, role, mailoviZaSlanje, projekat, poslao, affiID: affi })
+    console.log(newUser)
     newUser.save()
-      .then(() => res.json('User added'))
+      .then(() => {
+        User.find()
+    .then(users => res.json(users))
+    .catch(err => res.status(400).json('Error' + err))
+      })
       .catch(err => res.status(400).json('Error' + err))
-  }, 555);
+ }, 555);
 
 })
 

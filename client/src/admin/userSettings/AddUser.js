@@ -1,8 +1,11 @@
 import React, { useState, useContext, useRef, createRef } from 'react'
 import { OfferContext } from "../../context/Offer.context";
+import { RadniciContext } from "../../context/Radnici.context";
+import axios from 'axios';
 
 const AddUser = () => {
     const [offers, setOffers] = useContext(OfferContext)
+    const [radnici, setRadnici] = useContext(RadniciContext)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [role, setRole] = useState('radnik')
@@ -15,12 +18,24 @@ const AddUser = () => {
 
     const addUser = e => {
         e.preventDefault()
-        console.log("")
+        const data = new FormData()
+        data.append('username', username)
+        data.append('password', password)
+        data.append('role', role)
+        data.append('projekat', projekat)
+        data.append('poslao', poslao)
+        data.append('file', mailoviZaSlanje)
+        data.append('affiID', JSON.stringify(IDs))
+
+        axios.post(`http://localhost:5000/users/add`, data)
+        .then(res => {
+            setRadnici(res.data)
+            
+        })
     }
 
     const addAffiID = e => {
         IDs[e.target.dataset.value] = e.target.value
-        console.log(IDs)
     }
     return (
         <form onSubmit={addUser}>
@@ -29,7 +44,7 @@ const AddUser = () => {
             {offers.map(offer => (
                 <input onChange={addAffiID} data-value={offer.offer} key={offer._id} placeholder={`${offer.offer} affi ID`} />
             ))}
-            <input type="file" />
+            <input type="file" onChange={event => setMailoviZaSlanje(event.target.files[0])}/>
             <button type="submit">Dodaj radnika</button>
         </form>
     )
