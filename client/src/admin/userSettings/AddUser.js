@@ -12,6 +12,7 @@ const AddUser = () => {
     const [projekat, setProjekat] = useState('')
     const [poslao, setPoslao] = useState(0)
     const [mailoviZaSlanje, setMailoviZaSlanje] = useState(null)
+    const [primatelji, setPrimatelji] = useState("")
 
     const IDs = {}
     offers.map(offer => IDs[offer.offer] = "")
@@ -26,6 +27,7 @@ const AddUser = () => {
         data.append('poslao', poslao)
         data.append('file', mailoviZaSlanje)
         data.append('affiID', JSON.stringify(IDs))
+        data.append('primatelji', primatelji)
 
         axios.post(`http://localhost:5000/users/add`, data)
         .then(res => {

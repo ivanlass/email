@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
-import { RadniciContext } from "../../context/Radnici.context";
+import React, { useState } from 'react';
 import Select from '../Select'
 import './home.css'
 
 
-function UserCard() {
-  const [radnici, setRadnici] = useContext(RadniciContext)
-  const [pickedProject, setPickedProject] =useState(null)
+function UserCard(props) {
+  const [pickedProject, setPickedProject] =useState(props.radnik.projekat)
+
+  const [username, setUsername] = useState(props.radnik.username)
 
   const getPickedProject = e => {
     setPickedProject(e.target.value)
@@ -15,16 +15,16 @@ function UserCard() {
 
   return (
     <div>
-      {radnici.map(radnik => (
+
         <div className="user-card">
-          <p>{radnik.username}</p>
-          {/* <Select primatelji={true} selected={radnik.primatelji} /> */}
-          <p>{radnik.affiID[0][pickedProject]}</p>
-          <Select getPickedProject ={getPickedProject} primatelji={false} projekat={radnik.projekat} />
-          <p>{radnik.poslao}</p>
+          <p>{props.radnik.affiID[0][pickedProject]}</p>
+          <p>{props.radnik.username}</p>
+          <Select primatelji={true} selected={props.radnik.primatelji} /> 
+          <Select getPickedProject ={getPickedProject} primatelji={false} projekat={props.radnik.projekat} />
+          <p>{props.radnik.poslao}</p>
           <button>Submit</button>
         </div>
-      ))}
+
     </div>
   );
 }

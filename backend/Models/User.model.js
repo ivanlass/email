@@ -40,6 +40,10 @@ const userSchema = new Schema({
         type: Array,
         required: false,
     },
+    primatelji: {
+        type: String,
+        required: false,
+    },
 
 })
 
