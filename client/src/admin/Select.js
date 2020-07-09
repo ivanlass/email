@@ -9,7 +9,7 @@ function Select(props) {
 
         <div>
             {props.primatelji ?
-                <select>
+                <select onClick={props.getPrimatelji}>
                     {primatelji.map(primatelj => (
                         <option selected={props.selected === primatelj.listName ? true : false}>{primatelj.listName}</option>
                     ))}
